@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My orders</h1>
+{% for o in orders %}
+<div class="order">
+  <strong>Order #{{ o.pk }}</strong> · {{ o.created|date:"d M Y H:i" }} · {{ o.status|title }} · KSh {{ o.total|floatformat:0 }}
+  <ul>{% for i in o.items.all %}<li>{{ i.quantity }} × {{ i.product.name }}</li>{% endfor %}</ul>
+</div>
+{% empty %}<p>No orders yet.</p>{% endfor %}
+{% endblock %}

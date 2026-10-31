@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Login — Quartico{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form method="post" class="form">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="hidden" name="next" value="{{ next }}">
+  <button>Login</button>
+</form>
+<p>New here? <a href="{% url 'signup' %}">Create an account</a> · <a href="{% url 'password_reset' %}">Forgot password?</a></p>
+{% endblock %}

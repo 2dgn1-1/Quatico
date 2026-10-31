@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Checkout</h1>
+<p>{{ items|length }} item(s) · Total <strong>KSh {{ total|floatformat:0 }}</strong> · Pay on delivery</p>
+<form method="post" class="form">{% csrf_token %}{{ form.as_p }}<button>Place order</button></form>
+{% endblock %}
